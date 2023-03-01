@@ -1,0 +1,21 @@
+{
+    "extends": "@tsconfig/node18-strictest-esm/tsconfig.json",
+    "include": ["src/**/*", "test/**/*"],
+    "compilerOptions": {
+      "allowJs": true,
+      "baseUrl": "./",
+      "isolatedModules": true,
+      "lib": ["ES2015"],
+      "module": "CommonJS",
+      "moduleResolution": "node",
+      "outDir": ".build",
+      "preserveConstEnums": true,
+      "resolveJsonModule": true,
+      "rootDir": "./",
+      "sourceMap": true,
+      "strictNullChecks": true,
+      "target": "ES6"
+    },
+    "exclude": ["node_modules"]
+  }
+  

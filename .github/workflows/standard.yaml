@@ -1,0 +1,43 @@
+on:
+  push:
+    branches:
+      - main
+      - 'feature/**'
+      - 'fix/**'
+      - 'release/**'
+    paths-ignore:
+      - '**/*.md'
+      - '**/*.yml'
+      - '**/*.yaml'
+      - .github/**
+  pull_request:
+    branches:
+      - main
+    paths-ignore:
+      - '**/*.md'
+      - '**/*.yml'
+      - '**/*.yaml'
+      - .github/**
+  workflow_dispatch:
+
+name: Standard
+
+jobs:
+  ci:
+    name: CI - Build and Test
+    runs-on: ['self-hosted', 'consumidor-shr']
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          registry-url: https://npm.pkg.github.com/
+      - name: Install Dependencies
+        run: npm install
+      - name: Lint
+        run: npx eslint . --ext .js,.jsx,.ts,.tsx
+      - name: Test
+        run: npm test
