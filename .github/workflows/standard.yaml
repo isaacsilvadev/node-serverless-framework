@@ -25,7 +25,7 @@ name: Standard
 jobs:
   ci:
     name: CI - Build and Test
-    runs-on: ['self-hosted', 'consumidor-shr']
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
